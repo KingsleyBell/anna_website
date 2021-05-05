@@ -60,6 +60,7 @@ a, a:hover {
 
 .section-content {
     display: flex;
+    justify-content: center;
 }
 
 @media only screen and (min-width: 768px) {
@@ -107,6 +108,8 @@ ol li::before {
     display: flex;
     justify-content: space-around;
     transition: transform .2s;
+    max-width: 80vw;
+    max-height: 80vh;
 }
 
 a .section-card:hover {

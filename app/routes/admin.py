@@ -154,15 +154,22 @@ def upload(section_id):
         section = get_section_by_id(db, section_id)
 
         title = request.form.get('title')
-        image_file = request.files.get('file')
-        file_extension = image_file.filename.split('.')[-1]
-        upload_folder = os.path.join(application.static_folder, 'images/uploads')
-        filename = secure_filename(str(image_id) + '.' + file_extension)
-        image_file.save(os.path.join(upload_folder, filename))
+
+        if request.files.get('file').content_length != 0:
+            image_type = "image"
+            image_file = request.files.get('file')
+            file_extension = image_file.filename.split('.')[-1]
+            upload_folder = os.path.join(application.static_folder, 'images/uploads')
+            filename = secure_filename(str(image_id) + '.' + file_extension)
+            image_file.save(os.path.join(upload_folder, filename))
+        else:
+            image_type = "video"
+            filename = request.form.get('link')
 
         image_dict = {
             "id": image_id,
             "url": filename,
+            "type": image_type,
             "title": title,
             "width": 25,
             "top": 0,
