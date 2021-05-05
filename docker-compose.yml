@@ -7,10 +7,10 @@ services:
     ports:
       - "8007:8007"
     volumes:
-      - /Users/luke/Projects/personal/anna_website/app/static/db/db.json:/app/static/db/db.json
-      - /Users/luke/Projects/personal/anna_website/app/static/db/about.json:/app/static/db/about.json
-      - /Users/luke/Projects/personal/anna_website/app/static/images/:/app/static/images/
-      - /Users/luke/Projects/personal/anna_website/app/static/pdf/:/app/static/pdf/
+      - /home/ubuntu/anna_website/app/static/db/db.json:/app/static/db/db.json
+      - /home/ubuntu/anna_website/app/static/db/about.json:/app/static/db/about.json
+      - /home/ubuntu/anna_website/app/static/images/:/app/static/images/
+      - /home/ubuntu/anna_website/app/static/pdf/:/app/static/pdf/
     env_file:
       - "envfile"
 networks:
