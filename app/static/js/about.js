@@ -1,4 +1,4 @@
-var quill, aboutText;
+var quill, aboutHeading, aboutText;
 
 function htmlDecode(input){
   if (input.length == 0) {
@@ -10,16 +10,24 @@ function htmlDecode(input){
 }
 
 $(document).ready(function () {
-    quill = new Quill('#snow-container', {
+    quill = new Quill('#snow-container-heading', {
+        placeholder: "About heading",
+        theme: "snow"
+    });
+    quill.clipboard.dangerouslyPasteHTML(htmlDecode(aboutHeading));
+
+    quill = new Quill('#snow-container-text', {
         placeholder: "About text",
         theme: "snow"
     });
-    console.log(aboutText);
     quill.clipboard.dangerouslyPasteHTML(htmlDecode(aboutText));
 
     $("#about-form").on("submit", function () {
-        var myEditor = document.querySelector("#snow-container");
-        var html = myEditor.children[0].innerHTML;
-        $("#text").val(html);
+        var myHeadingEditor = document.querySelector("#snow-container-heading");
+        var myTextEditor = document.querySelector("#snow-container-text");
+        var headingHtml = myHeadingEditor.children[0].innerHTML;
+        var textHtml = myTextEditor.children[0].innerHTML;
+        $("#heading").val(headingHtml);
+        $("#text").val(textHtml);
     });
 });

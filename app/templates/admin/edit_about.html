@@ -21,11 +21,20 @@
   <div class="row justify-content-center mt-5">
     <div class="col-md-6">
       <form id="about-form" method="post" enctype="multipart/form-data">
-        <label>Text</label>
-        <div class="standalone-container mb-3">
-          <div id="snow-container"></div>
+        <div class="form-group">
+          <label>Heading</label>
+          <div class="standalone-container mb-3">
+            <div id="snow-container-heading"></div>
+          </div>
+          <input type="text" style="display: none;" id="heading" name="heading">
         </div>
-        <input type="text" style="display: none;" id="text" name="text">
+        <div class="form-group">
+          <label>Text</label>
+          <div class="standalone-container mb-3">
+            <div id="snow-container-text"></div>
+          </div>
+          <input type="text" style="display: none;" id="text" name="text">
+        </div>
         <button type="submit" class="btn btn-primary mb-2">Submit</button>
       </form>
     </div>
@@ -40,7 +49,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
 <script src="https://cdn.quilljs.com/1.0.6/quill.js"></script>
 
-<script>var aboutText = "{{ about_txt }}";</script>
+<script>
+  var aboutHeading = "{{ about.heading }}",
+    aboutText = "{{ about.text }}";
+</script>
 <script src="{{ url_for('static', filename='js/about.js') }}"></script>
 
 </body>

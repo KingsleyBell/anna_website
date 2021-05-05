@@ -10,13 +10,20 @@
     </div>
   </div>
 
-  <div class="row px-3 sections">
+  <div class="row px-3 section-content">
     {% for image in section.images %}
       <div class="section row px-3" id="section-{{ section.id }}">
         <div class="tab-content w-100">
           <div class="section-card">
-            <img class="section-img"#}
-                 src="{{ url_for('static', filename='images/uploads/' + image.url) }}">
+            {% if 'mp4' in image.url %}
+              <video width="320" height="240" controls>
+                <source src="{{ url_for('static', filename='images/uploads/' + image.url) }}"
+                        type="video/mp4">
+              </video>
+            {% else %}
+              <img class="section-img"#}
+               src="{{ url_for('static', filename='images/uploads/' + image.url) }}">
+            {% endif %}
           </div>
         </div>
       </div>

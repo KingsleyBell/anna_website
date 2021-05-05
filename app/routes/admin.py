@@ -101,6 +101,7 @@ def edit_image(section_id, image_id):
     db = json.loads(open(db_path, 'r').read())
     section = get_section_by_id(db, section_id)
     image = [i for i in section['images'] if i['id'] == image_id][0]
+
     if request.method == 'POST':
         section_id = request.form.get('section')
         title = request.form.get('title')
@@ -140,20 +141,17 @@ def edit_image(section_id, image_id):
         )
 
 
-@application.route('/upload/', methods=['GET', 'POST'])
 @application.route('/upload/<string:section_id>/', methods=['GET', 'POST'])
 @requires_auth
-def upload(section_id=None):
+def upload(section_id):
     db = json.loads(open(db_path, 'r').read())
     if request.method == 'POST':
-        section = request.form.get('section')
-
         image_ids = []
         for s in db:
             image_ids += [image['id'] for image in s['images']]
         image_id = max(image_ids + [0]) + 1
 
-        db_section = [s for s in db if s['id'] == section][0]
+        section = get_section_by_id(db, section_id)
 
         title = request.form.get('title')
         image_file = request.files.get('file')
@@ -171,13 +169,13 @@ def upload(section_id=None):
             "left": 0
           }
 
-        db_section['images'].append(image_dict)
+        section['images'].append(image_dict)
         update_db_file(db_path, db)
 
-        return redirect(url_for('sections'))
+        return redirect(url_for('admin_sections'))
     else:
         sections = {section['name']: section['id'] for section in db}
-        return render_template('upload.html', sections=sections, section=section_id)
+        return render_template('admin/upload.html', sections=sections, section=section_id)
 
 
 @application.route('/admin_about/', methods=['GET', 'POST'])
@@ -185,13 +183,17 @@ def upload(section_id=None):
 def admin_about():
     about_json = json.loads(open(about_path, 'r').read())
     if request.method == 'POST':
+        about_heading = request.form.get('heading')
         about_txt = request.form.get('text')
+
+        about_json['heading'] = about_heading
         about_json['text'] = about_txt
+
         update_db_file(about_path, about_json)
 
         return redirect(url_for('admin_sections'))
     else:
-        return render_template('admin/edit_about.html', about_txt=about_json['text'])
+        return render_template('admin/edit_about.html', about=about_json)
 
 
 @application.route('/new_home_image/', methods=['GET', 'POST'])
