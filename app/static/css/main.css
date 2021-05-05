@@ -52,6 +52,12 @@ a, a:hover {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+@media only screen and (max-width: 768px) {
+    .sections {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media only screen and (min-width: 768px) {
     /* For desktop: */
     .sidebar-sticky {
@@ -100,7 +106,7 @@ ol li::before {
 }
 
 a .section-card:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .section-text {

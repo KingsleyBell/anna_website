@@ -32,6 +32,10 @@
           </div>
           <input type="text" style="display: none;" id="text" name="text">
         </div>
+        <div class="form-group">
+          <label for="file">Section Image</label>
+          <input type="file" class="form-control-file" id="file" name="file" required>
+        </div>
         <a href="{{ url_for('edit_section_images', section_id=section.id) }}"
            class="btn btn-outline-success btn-block mb-2">
           Curate

@@ -62,20 +62,26 @@ def new_section():
 def edit_section(section_id):
     db = json.loads(open(db_path, 'r').read())
     section = get_section_by_id(db, section_id)
+
     if request.method == 'POST':
         section_name = request.form.get('name')
         section_id = re.sub('[^A-Za-z0-9]+', '_', section_name).lower()
         section_text = request.form.get('text')
-        sub_section = request.form.get('sub_section')
+
+        image_file = request.files.get('file')
+        file_extension = image_file.filename.split('.')[-1]
+        upload_folder = os.path.join(application.static_folder, 'images/uploads')
+        filename = secure_filename(str(section_id) + '.' + file_extension)
+        image_file.save(os.path.join(upload_folder, filename))
 
         section['name'] = section_name
         section['id'] = section_id
         section['text'] = section_text
-        section['sub_section'] = sub_section
+        section["image_url"] = filename
 
         update_db_file(db_path, db)
 
-        return redirect(url_for('sections'))
+        return redirect(url_for('admin_sections'))
     else:
         return render_template('admin/edit_section.html', section=section, db=db)
 
@@ -174,20 +180,6 @@ def upload(section_id=None):
         return render_template('upload.html', sections=sections, section=section_id)
 
 
-@application.route('/new_cv/', methods=['GET', 'POST'])
-@requires_auth
-def new_cv():
-    if request.method == 'POST':
-        cv_file = request.files.get('file')
-        upload_folder = os.path.join(application.static_folder, 'pdf')
-        filename = "CV.pdf"
-        cv_file.save(os.path.join(upload_folder, filename))
-
-        return redirect(url_for('sections'))
-    else:
-        return render_template('upload_file.html', form_label='New CV (must be pdf)')
-
-
 @application.route('/admin_about/', methods=['GET', 'POST'])
 @requires_auth
 def admin_about():
@@ -200,3 +192,17 @@ def admin_about():
         return redirect(url_for('admin_sections'))
     else:
         return render_template('admin/edit_about.html', about_txt=about_json['text'])
+
+
+@application.route('/new_home_image/', methods=['GET', 'POST'])
+@requires_auth
+def new_home_image():
+    if request.method == 'POST':
+        image_file = request.files.get('file')
+        upload_folder = os.path.join(application.static_folder, 'images')
+        filename = "home.jpg"
+        image_file.save(os.path.join(upload_folder, filename))
+
+        return redirect(url_for('admin_sections'))
+    else:
+        return render_template('admin/upload_file.html', form_label='New Home Image (must be jpg)')
