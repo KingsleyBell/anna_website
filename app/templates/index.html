@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="hero row px-3 active">
+    <div class="col-md-12 px-0 pb-5 text-center">
+      <img src="{{ url_for('static', filename='images/home.jpg') }}"
+           style="max-height: 80vh; max-width: 100%;">
+    </div>
+  </div>
+  <div class="row px-3 active" id="section-web-home">
+    <div class="col-md-12 px-0 pb-5 text-center">
+      {{ about.heading|safe }}
+    </div>
+    <div class="col-md-12 px-0 pb-5 text-center">
+      {{ about.text|safe }}
+    </div>
+  </div>
+
+  <div class="row px-3 sections">
+    {% for section in db %}
+      <div class="section row px-3" id="section-{{ section.id }}">
+        <div class="tab-content w-100">
+          <a href="{{ url_for('display_section', section_id=section.id) }}">
+            <div class="section-card">
+              <div class="section-title-overlay m-2">
+                <h3>{{ section.name }}</h3>
+              </div>
+              <img class="section-img"#}
+                   src="{{ url_for('static', filename='images/uploads/' + section.image_url) }}">
+  {#            {% for image in section.images %}#}
+  {#              <div style="display: inline-block;">#}
+  {#                <img class="section-img"#}
+  {#                     src="{{ url_for('static', filename='images/uploads/' + image.url) }}"#}
+  {#                     style="width: {{ image.width }}vw;"#}
+  {#                     data-toggle="modal"#}
+  {#                     data-target="#modal-{{ image.url }}">#}
+  {#                <div class="pt-3 pb-5" style="width: {{ image.width }}vw;">#}
+  {#                  <p>#}
+  {#                    {% if image.title %}#}
+  {#                      <b>{{ image.title }}</b> <br>#}
+  {#                    {% endif %}#}
+  {#                  </p>#}
+  {#                </div>#}
+  {#              </div>#}
+  {#            {% endfor %}#}
+            </div>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}

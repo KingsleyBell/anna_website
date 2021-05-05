@@ -1,0 +1,9 @@
+*.DS_Store
+*__pycache__*
+.idea/
+venv/
+envfile
+app/static/db/*
+app/static/pdf/*
+app/static/images/uploads/*
+app/static/images/home.jpg

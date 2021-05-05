@@ -1,0 +1,19 @@
+version: '3'
+services:
+  anna_web:
+    container_name: anna_web
+    build: ./
+    hostname: web
+    ports:
+      - "8002:8002"
+    volumes:
+      - /Users/luke/Projects/personal/anna_website/app/static/db/db.json:/app/static/db/db.json
+      - /Users/luke/Projects/personal/anna_website/app/static/db/about.json:/app/static/db/about.json
+      - /Users/luke/Projects/personal/anna_website/app/static/images/:/app/static/images/
+      - /Users/luke/Projects/personal/anna_website/app/static/pdf/:/app/static/pdf/
+    env_file:
+      - "envfile"
+networks:
+  default:
+    external:
+      name: websites

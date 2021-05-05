@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="row px-3 active" id="section-web-home">
+    <div class="col-md-12 px-0 pb-5 text-center">
+      <h3>{{ section.name }}</h3>
+    </div>
+    <div class="col-md-12 px-0 pb-5 text-center">
+      {{ section.text|safe }}
+    </div>
+  </div>
+
+  <div class="row px-3 sections">
+    {% for image in section.images %}
+      <div class="section row px-3" id="section-{{ section.id }}">
+        <div class="tab-content w-100">
+          <div class="section-card">
+            <img class="section-img"#}
+                 src="{{ url_for('static', filename='images/uploads/' + image.url) }}">
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}

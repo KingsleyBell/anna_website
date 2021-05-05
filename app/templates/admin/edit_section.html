@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EDIT SECTION</title>
+
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+
+  <!-- Include Quill stylesheets -->
+  <link rel="canonical" href="https://quilljs.com/standalone/snow/">
+  <link type="application/atom+xml" rel="alternate" href="https://quilljs.com/feed.xml" title="Quill - Your powerful rich text editor" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" />
+  <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <form id="section-form" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <textarea rows="3" class="form-control" id="name" name="name" >{{ section.name }}</textarea>
+        </div>
+        <div class="form-group">
+          <label>Text</label>
+          <div class="standalone-container mb-3">
+            <div id="snow-container"></div>
+          </div>
+          <input type="text" style="display: none;" id="text" name="text">
+        </div>
+        <a href="{{ url_for('edit_section_images', section_id=section.id) }}"
+           class="btn btn-outline-success btn-block mb-2">
+          Curate
+        </a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="{{ url_for('admin_sections')}}"
+           class="btn btn-outline-secondary float-right">
+          Back
+        </a>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Include the Quill library -->
+<script src="{{ url_for('static', filename='js/jquery-ui/external/jquery/jquery.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
+<script src="https://cdn.quilljs.com/1.0.6/quill.js"></script>
+
+<script>var sectionText = "{{ section.text }}";</script>
+<script src="{{ url_for('static', filename='js/edit_section.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-ui/jquery-ui.js') }}"></script>
+
+</body>
+</html>

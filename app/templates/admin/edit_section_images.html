@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EDIT SECTION IMAGES</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='js/jquery-ui/jquery-ui.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-12">
+        <div style="display: flex;">
+          {% for image in section.images %}
+            <div class="edit-section-image" id="image-{{ image.id }}"
+                 style="top: {{ image.top }}vh; left: {{ image.left }}vw; position: absolute;">
+              <img src="{{ url_for('static', filename='images/uploads/' + image.url) }}" style="width: {{ image.width }}vw; height: auto;">
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="submitCuration"
+          type="submit"
+          onclick="this.disabled = true"
+          class="btn btn-primary mb-2" style="position: fixed; top: 5px; left: 5px;">
+    Submit
+  </button>
+  <button style="position: fixed; top: 5px; right: 5px;">
+    <a href="{{ url_for('edit_section', section_id = section.id)}}">Cancel</a>
+  </button>
+
+  <script>
+    var successUrl = "{{ url_for('edit_section', section_id = section.id)}}",
+      images = {{ section.images | tojson }},
+      submitCurationUrl = "{{ url_for('submit_curation', section_id=section.id) }}";
+  </script>
+  <script src="{{ url_for('static', filename='js/jquery-ui/external/jquery/jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/edit_section_images.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery-ui/jquery-ui.js') }}"></script>
+</body>
+</html>
