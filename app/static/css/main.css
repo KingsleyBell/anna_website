@@ -106,6 +106,12 @@ ol li::before {
     max-width: 66vw;
 }
 
+@media only screen and (max-width: 768px) {
+    .section-card {
+        max-width: 80vw;
+    }
+}
+
 a .section-card:hover {
     transform: scale(1.05);
 }
