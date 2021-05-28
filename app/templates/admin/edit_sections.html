@@ -89,6 +89,6 @@
     shiftImageUrl = "{{ url_for('shift_image_position') }}",
     shiftSectionUrl = "{{ url_for('shift_section_position') }}";
 </script>
-<script src="{{ url_for('static', filename='js/sections.js') }}"></script>
+<script src="{{ url_for('static', filename='js/sections.js') }}?version={{ now }}"></script>
 </body>
 </html>

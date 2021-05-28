@@ -53,7 +53,7 @@
   var aboutHeading = "{{ about.heading }}",
     aboutText = "{{ about.text }}";
 </script>
-<script src="{{ url_for('static', filename='js/about.js') }}"></script>
+<script src="{{ url_for('static', filename='js/about.js') }}?version={{ now }}"></script>
 
 </body>
 </html>

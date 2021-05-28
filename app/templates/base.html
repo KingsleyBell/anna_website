@@ -9,7 +9,7 @@
   <meta name="author" content="">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.ico') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.ico') }}?version={{ now }}">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
 
@@ -27,7 +27,7 @@
   <!-- Your stuff: Third-party CSS libraries go here -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/main.css') }}?version={{ now }}" rel="stylesheet">
 </head>
 
 <body>

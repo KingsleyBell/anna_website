@@ -1,9 +1,21 @@
+from datetime import datetime
 import json
 import os
 
 from flask import Flask
 
 application = Flask(__name__)
+
+
+@application.context_processor
+def inject_now():
+    return {'now': datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')}
+
+
+@application.context_processor
+def inject_year():
+    return {'year': datetime.utcnow().year}
+
 
 db_path = os.path.join(application.static_folder, 'db/db.json')
 about_path = os.path.join(application.static_folder, 'db/about.json')

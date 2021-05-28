@@ -45,7 +45,7 @@
 <script>
   var contactText = "{{ contact.text }}";
 </script>
-<script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+<script src="{{ url_for('static', filename='js/contact.js') }}?version={{ now }}"></script>
 
 </body>
 </html>

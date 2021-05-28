@@ -51,14 +51,14 @@
 </div>
 
 <!-- Include the Quill library -->
-<script src="{{ url_for('static', filename='js/jquery-ui/external/jquery/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-ui/external/jquery/jquery.js') }}?version={{ now }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
 <script src="https://cdn.quilljs.com/1.0.6/quill.js"></script>
 
 <script>var sectionText = "{{ section.text }}";</script>
-<script src="{{ url_for('static', filename='js/edit_section.js') }}"></script>
-<script src="{{ url_for('static', filename='js/jquery-ui/jquery-ui.js') }}"></script>
+<script src="{{ url_for('static', filename='js/edit_section.js') }}?version={{ now }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-ui/jquery-ui.js') }}?version={{ now }}"></script>
 
 </body>
 </html>
