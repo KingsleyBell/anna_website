@@ -37,6 +37,10 @@
            class="btn btn-outline-dark">
           About
         </a>
+        <a href="{{ url_for('admin_contact') }}"
+           class="btn btn-outline-dark">
+          Contact
+        </a>
       </h3>
       {% for section in db %}
       <div class="card mb-3" id="section-{{ section.id }}">
