@@ -2,7 +2,7 @@ import json
 
 from flask import render_template
 
-from util import about_path, application, db_path, get_section_by_id
+from util import about_path, contact_path, application, db_path, get_section_by_id
 
 
 @application.route('/')
@@ -17,12 +17,12 @@ def home():
     )
 
 
-@application.route("/about")
-def about():
-    about_json = json.loads(open(about_path, 'r').read())['text']
+@application.route("/contact")
+def contact():
+    contact_json = json.loads(open(contact_path, 'r').read())['text']
     return render_template(
-        'about.html',
-        about=about_json
+        'contact.html',
+        contact=contact_json
     )
 
 

@@ -7,6 +7,7 @@ application = Flask(__name__)
 
 db_path = os.path.join(application.static_folder, 'db/db.json')
 about_path = os.path.join(application.static_folder, 'db/about.json')
+contact_path = os.path.join(application.static_folder, 'db/contact.json')
 
 
 def get_section_by_id(db, section_id):

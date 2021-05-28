@@ -6,7 +6,7 @@ from flask import jsonify, redirect, render_template, request, url_for
 from werkzeug.utils import secure_filename
 
 from auth import requires_auth
-from util import about_path, application, db_path, delete_image_file, get_section_by_id, update_db_file
+from util import about_path, application, contact_path, db_path, delete_image_file, get_section_by_id, update_db_file
 
 
 @application.route('/admin/', methods=['GET', 'POST'])
@@ -201,6 +201,22 @@ def admin_about():
         return redirect(url_for('admin_sections'))
     else:
         return render_template('admin/edit_about.html', about=about_json)
+
+
+@application.route('/admin_contact/', methods=['GET', 'POST'])
+@requires_auth
+def admin_contact():
+    contact_json = json.loads(open(contact_path, 'r').read())
+    if request.method == 'POST':
+        contact_txt = request.form.get('text')
+
+        contact_json['text'] = contact_txt
+
+        update_db_file(contact_path, contact_json)
+
+        return redirect(url_for('admin_sections'))
+    else:
+        return render_template('admin/edit_contact.html', contact=contact_json)
 
 
 @application.route('/new_home_image/', methods=['GET', 'POST'])

@@ -1,29 +1,19 @@
 <nav class="col-md-2 sidebar navbar navbar-expand-lg navbar-light pb-4" id="home-nav">
   <div class="sidebar-sticky">
     <h3 class="site-heading" style="position: relative">
-      <a href="/" id="home-link"">
+      <a href="/" id="home-link">
         ANNA <br>
         MATHILDE
       </a>
-      <button class="navbar-toggler pull-right border-0 text-dark"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-              style="position: absolute; top: 0; right: 0;">
-        <span class="navbar-toggler-icon"></span>
-      </button>
     </h3>
-{#    <div class="collapse navbar-collapse" id="navbarNavDropdown">#}
-{#      <ul class="nav flex-column">#}
-{#        <li class="nav-item">#}
-{#            <a href="{{ url_for('about') }}" class="nav-link nav-section py-0 pl-0" style="white-space: pre-line; color: inherit;">#}
-{#              About#}
-{#            </a>#}
-{#        </li>#}
-{#      </ul>#}
-{#    </div>#}
+    <div class="navbar-collapse" id="navbarNavDropdown">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+            <a href="{{ url_for('contact') }}" class="nav-link nav-section py-0 pl-0" style="white-space: pre-line; color: inherit;">
+              Contact
+            </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
