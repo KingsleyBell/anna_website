@@ -108,7 +108,7 @@ ol li::before {
 
 @media only screen and (max-width: 768px) {
     .section-card {
-        max-width: 80vw;
+        max-width: 100vw;
     }
 }
 
