@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="hero row px-3 active">
-    <div class="col-md-12 px-0 pb-5 text-center">
-      <img src="{{ url_for('static', filename='images/home.jpg') }}"
-           style="max-height: 80vh; max-width: 100%;">
+  {% if about.show_home_image == "on" %}
+    <div class="hero row px-3 active">
+      <div class="col-md-12 px-0 pb-5 text-center">
+        <img src="{{ url_for('static', filename='images/home.jpg') }}"
+             style="max-height: 80vh; max-width: 100%;">
+      </div>
     </div>
-  </div>
+  {% endif %}
   <div class="row px-3 active" id="section-web-home">
     <div class="col-md-12 px-0 pb-5 text-center">
       {{ about.heading|safe }}

@@ -20,18 +20,23 @@ def home():
 @application.route("/contact")
 def contact():
     contact_json = json.loads(open(contact_path, 'r').read())['text']
+    about = json.loads(open(about_path, 'r').read())
+
     return render_template(
         'contact.html',
-        contact=contact_json
+        contact=contact_json,
+        about=about
     )
 
 
 @application.route('/x/<string:section_id>/')
 def display_section(section_id):
     db = json.loads(open(db_path, 'r').read())
+    about = json.loads(open(about_path, 'r').read())
     section = get_section_by_id(db, section_id)
 
     return render_template(
         'section.html',
-        section=section
+        section=section,
+        about=about
     )

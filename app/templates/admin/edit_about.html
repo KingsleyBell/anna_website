@@ -11,9 +11,11 @@
 
   <!-- Include Quill stylesheets -->
   <link rel="canonical" href="https://quilljs.com/standalone/snow/">
-  <link type="application/atom+xml" rel="alternate" href="https://quilljs.com/feed.xml" title="Quill - Your powerful rich text editor" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" />
+  <link type="application/atom+xml" rel="alternate" href="https://quilljs.com/feed.xml"
+        title="Quill - Your powerful rich text editor"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"/>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/>
   <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
 </head>
 <body>
@@ -34,6 +36,20 @@
             <div id="snow-container-text"></div>
           </div>
           <input type="text" style="display: none;" id="text" name="text">
+        </div>
+        <div class="form-group">
+          <label>Background Colour</label>
+          <input type="color" name="backgroundColour" id="backgroundColour" onchange="clickColor(0, -1, -1, 5)"
+                 value="{{ about.background_colour }}" style="width:85%;">
+        </div>
+        <div class="form-group">
+          <label>Text Colour</label>
+          <input type="color" name="textColour" id="textColour" onchange="clickColor(0, -1, -1, 5)"
+                 value="{{ about.text_colour }}" style="width:85%;">
+        </div>
+        <div class="form-group">
+          <label>Show Home Image</label>
+          <input type="checkbox" {% if about.show_home_image %}checked{% endif %} name="showHomeImage">
         </div>
         <button type="submit" class="btn btn-primary mb-2">Submit</button>
       </form>

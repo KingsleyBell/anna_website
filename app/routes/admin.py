@@ -192,9 +192,15 @@ def admin_about():
     if request.method == 'POST':
         about_heading = request.form.get('heading')
         about_txt = request.form.get('text')
+        background_colour = request.form.get('backgroundColour')
+        text_colour = request.form.get('textColour')
+        show_home_image = request.form.get('showHomeImage')
 
         about_json['heading'] = about_heading
         about_json['text'] = about_txt
+        about_json['background_colour'] = background_colour
+        about_json['text_colour'] = text_colour
+        about_json['show_home_image'] = show_home_image
 
         update_db_file(about_path, about_json)
 

@@ -28,6 +28,20 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet">
   <link href="{{ url_for('static', filename='css/main.css') }}?version={{ now }}" rel="stylesheet">
+  <style>
+    body {
+      position: relative;
+      font-family: helvetica-w01-light,helvetica-w02-light,sans-serif;
+      font-size: 12px;
+      min-height: 100vh;
+      background-color: {{ about.background_colour }};
+      color: {{ about.text_colour }};
+    }
+
+    a, a:hover {
+      color: {{ about.text_colour }};
+    }
+  </style>
 </head>
 
 <body>
