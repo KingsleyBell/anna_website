@@ -1,3 +1,7 @@
+a:hover {
+  text-decoration: none;
+}
+
 .footer {
   position: absolute;
   left: 0;
