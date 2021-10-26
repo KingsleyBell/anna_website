@@ -16,7 +16,9 @@
         <div class="tab-content w-100">
           <div class="section-card">
             {% if image.type == "video" %}
-              <iframe width="1904" height="694" src="https://www.youtube.com/embed/{{ image.url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div class="videowrapper">
+                <iframe src="https://www.youtube.com/embed/{{ image.url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
             {% else %}
               <img class="section-img"#}
                src="{{ url_for('static', filename='images/uploads/' + image.url) }}">
