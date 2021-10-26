@@ -68,16 +68,18 @@ def edit_section(section_id):
         section_id = re.sub('[^A-Za-z0-9]+', '_', section_name).lower()
         section_text = request.form.get('text')
 
-        image_file = request.files.get('file')
-        file_extension = image_file.filename.split('.')[-1]
-        upload_folder = os.path.join(application.static_folder, 'images/uploads')
-        filename = secure_filename(str(section_id) + '.' + file_extension)
-        image_file.save(os.path.join(upload_folder, filename))
-
         section['name'] = section_name
         section['id'] = section_id
         section['text'] = section_text
-        section["image_url"] = filename
+
+        image_file = request.files.get('file')
+        if image_file:
+            file_extension = image_file.filename.split('.')[-1]
+            upload_folder = os.path.join(application.static_folder, 'images/uploads')
+            filename = secure_filename(str(section_id) + '.' + file_extension)
+            image_file.save(os.path.join(upload_folder, filename))
+            section["image_url"] = filename
+
 
         update_db_file(db_path, db)
 
@@ -155,7 +157,7 @@ def upload(section_id):
 
         title = request.form.get('title')
 
-        if request.files.get('file').content_length != 0:
+        if request.files.get('file').filename:
             image_type = "image"
             image_file = request.files.get('file')
             file_extension = image_file.filename.split('.')[-1]

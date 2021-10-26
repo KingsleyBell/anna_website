@@ -12,7 +12,8 @@ function htmlDecode(input){
 $(document).ready(function () {
   quill = new Quill('#snow-container', {
     placeholder: "Section text here",
-    theme: "snow"
+    theme: "snow",
+    formats: ["header", "bold", "underline", "italic"],
   });
   quill.clipboard.dangerouslyPasteHTML(htmlDecode(sectionText));
 

@@ -21,7 +21,10 @@
               </div>
             {% else %}
               <img class="section-img"#}
-               src="{{ url_for('static', filename='images/uploads/' + image.url) }}">
+               src="{{ url_for('static', filename='images/uploads/' + image.url) }}"
+               title="{{ image.title }}"
+               alt="{{ image.title }}"
+              >
             {% endif %}
           </div>
         </div>
