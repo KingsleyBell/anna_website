@@ -26,7 +26,7 @@
             <div class="tab-content w-100">
               <a href="{{ url_for('display_section', section_id=section.id) }}">
                 <div class="section-card">
-                  <div class="section-title-overlay m-2">
+                  <div class="section-title-overlay">
                     <h4>{{ section.name }}</h4>
                   </div>
                   <img class="section-img"#}
@@ -45,8 +45,8 @@
             <div class="tab-content w-100">
               <a href="{{ url_for('display_section', section_id=section.id) }}">
                 <div class="section-card">
-                  <div class="section-title-overlay m-2">
-                    <h3>{{ section.name }}</h3>
+                  <div class="section-title-overlay">
+                    <h4>{{ section.name }}</h4>
                   </div>
                   <img class="section-img"#}
                        src="{{ url_for('static', filename='images/uploads/' + section.image_url) }}">

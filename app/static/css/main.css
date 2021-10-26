@@ -87,6 +87,7 @@ ol li::before {
 .section-card {
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
     transition: transform .2s;
     padding: 15px;
     max-width: 66vw;
@@ -108,7 +109,8 @@ a .section-card:hover {
 }
 
 .section-title-overlay {
-    position: absolute;
+    width: 100%;
+    text-align: center;
 }
 
 .section-img {
